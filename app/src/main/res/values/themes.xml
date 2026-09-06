@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.TvACaboApp" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">#0F0F10</item>
+        <item name="android:colorPrimaryDark">#0F0F10</item>
+        <item name="android:colorAccent">#00FF41</item>
+    </style>
+    <style name="Theme.TvACaboApp.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>\n
