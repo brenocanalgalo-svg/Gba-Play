@@ -23,7 +23,7 @@ jobs:
       run: gradle assembleRelease --no-daemon
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: TvACaboApp-Release
         path: app/build/outputs/apk/release/app-release-unsigned.apk
