@@ -16,11 +16,7 @@ public class MainActivity extends Activity {
         GeckoView view = findViewById(R.id.geckoview);
         GeckoSession session = new GeckoSession();
         
-        GeckoRuntimeSettings.Builder builder = new GeckoRuntimeSettings.Builder()
-            .setTrustedRecursiveResolverMode(3)
-            .setTrustedRecursiveResolverUri("https://mozilla.cloudflare-dns.com/dns-query");
-            
-        GeckoRuntime runtime = GeckoRuntime.create(this, builder.build());
+        GeckoRuntime runtime = GeckoRuntime.create(this);
         session.open(runtime);
         view.setSession(session);
         session.loadUri("https://harmonious-parfait-a4975b.netlify.app/");
