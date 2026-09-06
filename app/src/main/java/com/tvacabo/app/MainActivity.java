@@ -17,13 +17,12 @@ public class MainActivity extends Activity {
         GeckoSession session = new GeckoSession();
         
         GeckoRuntimeSettings.Builder builder = new GeckoRuntimeSettings.Builder()
-            .configOverride("network.trr.mode", 3)
-            .configOverride("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query")
-            .configOverride("network.trr.bootstrapAddress", "1.1.1.1");
+            .setTrustedRecursiveResolverMode(3)
+            .setTrustedRecursiveResolverUri("https://mozilla.cloudflare-dns.com/dns-query");
             
         GeckoRuntime runtime = GeckoRuntime.create(this, builder.build());
         session.open(runtime);
         view.setSession(session);
         session.loadUri("https://harmonious-parfait-a4975b.netlify.app/");
     }
-}\n
+}
