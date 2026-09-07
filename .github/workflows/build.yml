@@ -23,6 +23,13 @@ jobs:
       with:
         gradle-version: '8.4'
 
+    - name: Colocar Nova Logo GBA PLAY como Icone do App
+      run: |
+        mkdir -p app/src/main/res/drawable
+        curl -sL "https://harmonious-parfait-a4975b.netlify.app/logo.png" -o app/src/main/res/drawable/ic_launcher.png
+        sed -i 's/@mipmap\/ic_launcher_round/@drawable\/ic_launcher/g' app/src/main/AndroidManifest.xml
+        sed -i 's/@mipmap\/ic_launcher/@drawable\/ic_launcher/g' app/src/main/AndroidManifest.xml
+
     - name: Build with Gradle
       run: gradle assembleDebug --no-daemon
 
