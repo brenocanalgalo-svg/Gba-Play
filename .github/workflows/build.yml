@@ -27,11 +27,32 @@ jobs:
       run: |
         curl -sL "https://harmonious-parfait-a4975b.netlify.app/logo.png" -o logo.png
         rm -rf app/src/main/res/mipmap*
+        rm -f app/src/main/res/drawable/ic_launcher*
+
         for d in mipmap-mdpi mipmap-hdpi mipmap-xhdpi mipmap-xxhdpi mipmap-xxxhdpi; do
           mkdir -p app/src/main/res/$d
           cp logo.png app/src/main/res/$d/ic_launcher.png
           cp logo.png app/src/main/res/$d/ic_launcher_round.png
+          cp logo.png app/src/main/res/$d/ic_launcher_foreground.png
         done
+
+        mkdir -p app/src/main/res/mipmap-anydpi-v26
+        cat << 'EOF' > app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+        <?xml version="1.0" encoding="utf-8"?>
+        <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+            <background android:drawable="@color/ic_launcher_bg"/>
+            <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+        </adaptive-icon>
+        EOF
+        cp app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+
+        mkdir -p app/src/main/res/values
+        cat << 'EOF' > app/src/main/res/values/ic_launcher_bg.xml
+        <?xml version="1.0" encoding="utf-8"?>
+        <resources>
+            <color name="ic_launcher_bg">#0a0a0f</color>
+        </resources>
+        EOF
 
     - name: Build with Gradle
       run: gradle assembleDebug --no-daemon
