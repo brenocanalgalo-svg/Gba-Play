@@ -24,10 +24,10 @@ jobs:
         gradle-version: '8.4'
 
     - name: Build with Gradle
-      run: gradle assembleRelease --no-daemon
+      run: gradle assembleDebug --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: TvACaboApp-Release
-        path: app/build/outputs/apk/release/app-release-unsigned.apk
+        name: GbaPlay-APK
+        path: app/build/outputs/apk/debug/app-debug.apk
